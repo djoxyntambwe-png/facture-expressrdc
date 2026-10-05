@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Facturation Express"
+description = "Application de facturation en français permettant de saisir un client, un article, un prix unitaire et une quantité, puis de calculer le montant hors taxe, la TVA RDC à 16 % et le total TTC en USD."
+version = "1.0.0"
+id = "artifacts/facturation-express"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21912
+
+[services.development]
+run = "pnpm --filter @workspace/facturation-express run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/facturation-express", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/facturation-express/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21912"
+BASE_PATH = "/"

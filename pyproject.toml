@@ -1,8 +1,0 @@
-[project]
-name = "facturation-express"
-version = "0.1.0"
-description = "Application Streamlit de facturation avec calcul de TVA."
-requires-python = ">=3.13"
-dependencies = [
-    "streamlit>=1.65.0",
-]

@@ -1,31 +1,32 @@
 # Facturation Express
 
-Une application Streamlit en français pour calculer le montant hors taxe, la TVA de 16 % et le total TTC d’une vente.
+Une application web en français pour calculer une vente en USD, sa TVA RDC de 16 % et son total TTC.
 
 ## Run & Operate
 
-- `streamlit run app.py --server.port 5000 --server.address 0.0.0.0` — lancer l’application
-- L’application utilise le taux de TVA fixe de 16 % fourni dans la demande.
-- Les factures sont calculées à l’écran et ne sont pas enregistrées dans une base de données.
+- Le workflow Replit `artifacts/facturation-express: web` lance l’application dans l’aperçu.
+- `pnpm --filter @workspace/facturation-express run typecheck` — vérifier les types.
+- Le workflow gère le port et le chemin de prévisualisation requis par Vite.
+- Les reçus sont calculés dans le navigateur et ne sont pas enregistrés.
 
 ## Stack
 
-- Python 3.13
-- Streamlit
+- React, TypeScript et Vite
 
 ## Where things live
 
-- `app.py` — formulaire de vente et calcul de facture
+- `artifacts/facturation-express/src/App.tsx` — formulaire et calcul de facture
+- `artifacts/facturation-express/src/index.css` — styles de l’application
 
 ## Architecture decisions
 
-- La facture reste en mémoire de session pour rester visible après sa génération.
-- Aucun renseignement de client ni aucune facture n’est stocké sur le serveur.
+- Le calcul se fait dans le navigateur, sans API ni base de données.
+- Le taux de TVA est fixe à 16 % et les montants calculés sont arrondis à deux décimales.
 
 ## Product
 
-- Saisie du client, de l’article, du prix unitaire et de la quantité.
-- Calcul et affichage des montants HT, TVA et TTC en USD.
+- Saisie du client, du produit ou service, du prix unitaire et de la quantité.
+- Calcul et affichage du reçu, du montant HT, de la TVA et du total TTC en USD.
 
 ## User preferences
 
@@ -37,4 +38,4 @@ Une application Streamlit en français pour calculer le montant hors taxe, la TV
 
 ## Pointers
 
-- Voir `app.py` pour le flux de facturation.
+- Voir `artifacts/facturation-express/src/App.tsx` pour le flux de facturation.
