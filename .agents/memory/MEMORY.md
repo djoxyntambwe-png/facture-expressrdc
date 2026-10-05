@@ -1,1 +1,2 @@
 - [Streamlit preview routing](streamlit-preview-routing.md) — a local HTTP 200 does not prove the Replit root preview is routed.
+- [Vercel build ports](vercel-build-ports.md) — Vite builds must not read or override Vercel's reserved `PORT`.
