@@ -1,45 +1,40 @@
-# [Project name]
+# Facturation Express
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Une application Streamlit en français pour calculer le montant hors taxe, la TVA de 16 % et le total TTC d’une vente.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `streamlit run app.py --server.port 5000 --server.address 0.0.0.0` — lancer l’application
+- L’application utilise le taux de TVA fixe de 16 % fourni dans la demande.
+- Les factures sont calculées à l’écran et ne sont pas enregistrées dans une base de données.
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Python 3.13
+- Streamlit
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `app.py` — formulaire de vente et calcul de facture
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- La facture reste en mémoire de session pour rester visible après sa génération.
+- Aucun renseignement de client ni aucune facture n’est stocké sur le serveur.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Saisie du client, de l’article, du prix unitaire et de la quantité.
+- Calcul et affichage des montants HT, TVA et TTC en USD.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Interface en français.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Le taux de TVA est actuellement fixe à 16 %.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- Voir `app.py` pour le flux de facturation.
